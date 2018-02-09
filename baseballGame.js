@@ -1,17 +1,3 @@
-
-// 숫자를 생성 하는 함수
-// var makeNum = function make() {
-//   var list = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-//   var number = [];
-
-//   for (var i = 0; i < 3; i++) {
-//     var select = Math.floor(Math.random() * list.length);
-//     number[i] = list.splice(select, 1)[0];
-//   }
-//   return number;
-// };
-
-// var input = prompt("숫자를 입력하세요");
 var input = "321";
 var number = [];
 var strike;
