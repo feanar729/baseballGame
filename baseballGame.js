@@ -1,3 +1,4 @@
+
 // 숫자를 생성 하는 함수
 // var makeNum = function make() {
 //   var list = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -10,44 +11,58 @@
 //   return number;
 // };
 
-var list = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// var input = prompt("숫자를 입력하세요");
+var input = "321";
 var number = [];
+var strike;
+var ball;
+var inputArray;
 
-for (var i = 0; i < 3; i++) {
-  var select = Math.floor(Math.random() * list.length);
-  number[i] = list.splice(select, 1)[0];
+function inputNumber() {
+  return inputArray = input.split("");
 }
 
-var strike = 0;
-var ball = 0;
+function makeNumber() {
+  var list = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-while(strike <= 3){
-  var input = prompt("숫자를 입력하세요");
-  var inputArray = input.split("");
+  for (var i = 0; i < 3; i++) {
+    var select = Math.floor(Math.random() * list.length);
+    number[i] = list.splice(select, 1)[0];
+  }
+  return number;
+};
 
+// 입력값(inputNumber)과 랜덤숫자(makeNumber)는 함수화가 된거 같으나 비교에서 함수화 하기가 벅참..
+// 문제점이 정확하게 잘 못잡지만 차근차근 해나아갈 생각...
+
+function initialize() {
   strike = 0;
   ball = 0;
-  for (var i = 0; i < 3; i++) {
-    for (var k = 0; k < 3; k++) {
-      if (number[i] == inputArray[k]) {
-        if (i === k) {
-          strike++;
-        } else {
-          ball++;
+  while (strike <= 3) {
+    for (var i = 0; i < 3; i++) {
+      for (var j = 0; j < 3; j++) {
+        if (number[j] == inputArray[i]) {
+          if (i === j){
+            strike++;
+          } else { 
+            ball++;
+          }
         }
         break;
       }
     }
   }
-
-  if(strike === 3) {
+  if (strike === 3) {
     console.log("3 스트라이크" + '\n' + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-    break;
-  } else if(inputArray == "") {
-    console.info(inputArray.join(" ") + ' : ' + '입력 오류!' + '\n' + display.value);
-  } else if(strike == 0 && ball==0){
+  } else if (inputArray == "") {
+    console.log(inputArray.join(" ") + ' : ' + '입력 오류!' + '\n');
+  } else if (strike == 0 && ball == 0) {
     console.log("낫싱!!")
   } else {
-    console.info(inputArray.join("") + ": " + strike + "스트라이크 " + ball + "볼");
+    console.log(inputArray.join("") + ": " + strike + "스트라이크 " + ball + "볼");
   }
-}
+    
+};
+
+console.log(makeNumber(), inputNumber());
+console.log(initialize());
